@@ -1,18 +1,32 @@
 import pygame
 from pygame.locals import*
 
-class Square(pygame.sprite.Sprite):
-	def __init__(self):
-		super(Square, self).__init__()
-		self.surf = pygame.Surface((25, 25))
-		self.surf.fill((0, 200, 255))
-		self.rect = self.surf.get_rect()
-
-
 pygame.init()
-screen = pygame.display.set_mode((800,600))
+# set screen width and height
+X=600
+Y=600
+# width of each cube
+diff=X/9
 
-square1= Square()
+# initialise the screeen
+screen = pygame.display.set_mode((X,Y))
+
+# set the caption
+pygame.display.set_caption(" SUDOKU SOLVER ")
+
+# Draw the sudoku board
+def Drawgrid():
+    for i in range(10):
+        
+        if i%3==0:
+            thick=8
+        else:
+            thick=1
+        pygame.draw.line(screen,(1,1,1),(0,i*diff),(600,i*diff),thick)
+        pygame.draw.line(screen,(1,1,1),(i*diff,0),(i*diff,600),thick)
+
+
+
 
 running=True
 
@@ -24,15 +38,14 @@ text_rect= text.get_rect()
 text_rect.center=(400,300)
 
 while running:
+    screen.fill((255,255,255))
     for event in pygame.event.get():
         if event.type == KEYDOWN:
             if event.key == K_BACKSPACE:
                 running=False
         elif event.type == QUIT:
             running=False
-    screen.blit(square1.surf,(250,240))
-    screen.blit(text,text_rect)
-
+    Drawgrid()
     pygame.display.flip()
 
 
