@@ -68,7 +68,9 @@ def Select_box(x,y):
         
 # putting the selected val
 def putVal(val,row,col,delay):
+    text1 = font_sm2.render("INVALID ENTRY !! ", 1, (255, 0, 0))
     text= font_sm.render(str(val),1,(255,0,0))
+    screen.blit(text1, (20, 620))       
     screen.blit(text,(row*diff+18,col*diff+18))
     Drawgrid()
     pygame.display.update()
@@ -183,6 +185,19 @@ while running:
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                ]
+                box_selected=False
+            if event.key ==K_d:
+                grid =[
+                [7, 8, 0, 4, 0, 0, 1, 2, 0],
+                [6, 0, 0, 0, 7, 5, 0, 0, 9],
+                [0, 0, 0, 6, 0, 1, 0, 7, 8],
+                [0, 0, 7, 0, 4, 0, 2, 6, 0],
+                [0, 0, 1, 0, 5, 0, 9, 3, 0],
+                [9, 0, 4, 0, 6, 0, 0, 0, 5],
+                [0, 7, 0, 3, 0, 0, 0, 1, 2],
+                [1, 2, 0, 0, 0, 7, 4, 0, 0],
+                [0, 4, 9, 2, 0, 6, 0, 0, 7]
                 ]
                 box_selected=False
             if event.key == K_RETURN:
